@@ -11,18 +11,18 @@ Desenvolvimento de uma página de e-commerce para a loja Tico de Gente, localiza
 A loja enfrenta dificuldades em competir com grandes plataformas de e-commerce, como Shopee, Shein e Amazon. Além disso, há limitações no alcance de clientes e no processo de vendas, que atualmente depende majoritariamente do espaço físico.
 
 ### Público alvo
-- Pais e responsáveis por crianças
-- Gestantes
-- Clientes que buscam roupas e acessórios infantis online
-- Consumidores da região de Taiobeiras e outras localidades
+1. Pais e responsáveis por crianças
+2. Gestantes
+3. Clientes que buscam roupas e acessórios infantis online
+4. Consumidores da região de Taiobeiras e outras localidades
 
 ### Funcionalidades
-- Catálogo de produtos organizado por categorias
-- Sistema de carrinho de compras
-- Cadastro e login de usuários
-- Integração com meios de pagamento
-- Interface responsiva e de fácil navegação
-- Destaque para promoções e produtos em alta
+1. Catálogo de produtos organizado por categorias
+2. Sistema de carrinho de compras
+3. Cadastro e login de usuários
+4. Integração com meios de pagamento
+5. Interface responsiva e de fácil navegação
+6. Destaque para promoções e produtos em alta
 
 --
 
@@ -39,17 +39,17 @@ Criação de uma página dedicada à divulgação de ofertas, novidades e conte�
 A loja possui pouca interação contínua com os clientes no ambiente digital, o que dificulta a fidelização e a divulgação de novidades. Falta um canal estruturado para comunicação direta e recorrente com o público.
 
 ### Público alvo
-- Clientes atuais da loja
-- Pais e responsáveis
-- Gestantes
-- Público interessado em conteúdos sobre cuidados infantis
+1. Clientes atuais da loja
+2. Pais e responsáveis
+3. Gestantes
+4. Público interessado em conteúdos sobre cuidados infantis
 
 ### Funcionalidades
-- Seção de promoções e descontos atualizados
-- Área de novidades e lançamentos
-- Publicação de conteúdos informativos (dicas e cuidados)
-- Integração com redes sociais
-- Sistema de destaque para campanhas sazonais
+1. eção de promoções e descontos atualizados
+2. Área de novidades e lançamentos
+4. Publicação de conteúdos informativos (dicas e cuidados)
+5. Integração com redes sociais
+6. Sistema de destaque para campanhas sazonais
 
 --
 
@@ -66,13 +66,13 @@ Desenvolvimento de uma página interna para controle e gerenciamento de estoque 
 A loja enfrenta dificuldades no controle manual do estoque, o que pode gerar erros, falta de produtos ou excesso de mercadorias. Isso impacta diretamente nas vendas e na gestão do negócio.
 
 ### Público alvo
-- Proprietária da loja
-- Funcionários responsáveis pela gestão de estoque
-- Equipe administrativa
+1. Proprietária da loja
+2. Funcionários responsáveis pela gestão de estoque
+3. Equipe administrativa
 
 ### Funcionalidades
-- Cadastro de produtos
-- Controle de entradas e saídas
-- Atualização automática de quantidades
-- Alertas de estoque baixo
-- Relatórios de movimentação de produtos
+1. Cadastro de produtos
+2. Controle de entradas e saídas
+3. Atualização automática de quantidades
+4. Alertas de estoque baixo
+5. Relatórios de movimentação de produtos
