@@ -1,0 +1,47 @@
+erDiagram
+    CATEGORIA ||--o{ PRODUTO : "possui"
+    PRODUTO ||--o{ GRADE : "possui em estoque"
+    TAMANHO ||--o{ GRADE : "aplica-se a"
+    COR ||--o{ GRADE : "aplica-se a"
+    CLIENTE ||--o{ INTERESSE : "demonstra"
+    PRODUTO ||--o{ INTERESSE : "referenciado em"
+
+    CATEGORIA {
+        String codigo PK
+        String nome
+        String descricao
+    }
+    PRODUTO {
+        String codigo PK
+        String nome
+        String descricao
+        Decimal preco
+        Boolean ativo
+    }
+    TAMANHO {
+        String codigo PK
+        String faixa
+        Int idadeMinima
+        Int idadeMaxima
+    }
+    COR {
+        String codigo PK
+        String nome
+    }
+    GRADE {
+        String codigo PK
+        Int quantidade
+        String observacao
+    }
+    CLIENTE {
+        String codigo PK
+        String nome
+        String whatsapp
+        String email
+    }
+    INTERESSE {
+        String codigo PK
+        DateTime dataInteresse
+        String mensagem
+        String status
+    }

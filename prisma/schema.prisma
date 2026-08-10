@@ -1,0 +1,120 @@
+// =============================================================================
+// Tico de Gente — Modelo Lógico (Prisma Schema)
+// Loja de roupa infantil: catálogo virtual com controle de estoque,
+// sem checkout no site. Pedidos são fechados via WhatsApp da empresa.
+// =============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// -----------------------------------------------------------------------------
+// CATEGORIA — agrupa os produtos por público/faixa (bebês, meninas, meninos...)
+// -----------------------------------------------------------------------------
+model Categoria {
+  codigo      String     @id @default(uuid())
+  nome        String     @unique
+  descricao   String?    // justificativa: categorias simples não precisam de descrição
+  criadoEm    DateTime   @default(now())
+
+  produtos    Produto[]
+}
+
+// -----------------------------------------------------------------------------
+// PRODUTO — item do catálogo (ex.: "Vestido Floral Jardim")
+// -----------------------------------------------------------------------------
+model Produto {
+  codigo      String     @id @default(uuid())
+  nome        String     @unique
+  descricao   String?    // justificativa: alguns produtos do catálogo não têm descrição detalhada
+  preco       Decimal
+  ativo       Boolean    @default(true) // false = peça esgotada ou retirada da galeria
+  categoriaId String
+  criadoEm    DateTime   @default(now())
+  atualizadoEm DateTime  @updatedAt
+
+  categoria   Categoria  @relation(fields: [categoriaId], references: [codigo])
+  grade       Grade[]
+  interesses  Interesse[]
+}
+
+// -----------------------------------------------------------------------------
+// TAMANHO — faixas etárias de roupa infantil (ex.: "Bebê P", "2 a 4 anos")
+// -----------------------------------------------------------------------------
+model Tamanho {
+  codigo        String  @id @default(uuid())
+  faixa         String  @unique
+  idadeMinima   Int?    // justificativa: algumas faixas não têm correspondência etária clara
+  idadeMaxima   Int?    // justificativa: algumas faixas não têm correspondência etária clara
+  criadoEm      DateTime @default(now())
+
+  grade         Grade[]
+}
+
+// -----------------------------------------------------------------------------
+// COR — cores disponíveis das peças (ex.: "Rosa Bebê", "Azul Marinho")
+// -----------------------------------------------------------------------------
+model Cor {
+  codigo      String    @id @default(uuid())
+  nome        String    @unique
+  criadoEm    DateTime  @default(now())
+
+  grade       Grade[]
+}
+
+// -----------------------------------------------------------------------------
+// GRADE — tabela de interseção Produto × Tamanho × Cor.
+// Cada combinação de produto + tamanho + cor possui sua quantidade em estoque.
+// -----------------------------------------------------------------------------
+model Grade {
+  codigo      String    @id @default(uuid())
+  quantidade  Int       @default(0)
+  observacao  String?   // justificativa: avisos como "últimas peças" ou "sob encomenda"
+  produtoId   String
+  tamanhoId   String
+  corId       String
+  criadoEm    DateTime  @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  produto     Produto   @relation(fields: [produtoId], references: [codigo])
+  tamanho     Tamanho   @relation(fields: [tamanhoId], references: [codigo])
+  cor         Cor       @relation(fields: [corId], references: [codigo])
+
+  @@unique([produtoId, tamanhoId, corId], name: "grade_uk")
+}
+
+// -----------------------------------------------------------------------------
+// CLIENTE — visitante da loja virtual que deixa contato (interesse em peças)
+// -----------------------------------------------------------------------------
+model Cliente {
+  codigo      String     @id @default(uuid())
+  nome        String
+  whatsapp    String     @unique // canal principal de contato e fechamento de pedidos
+  email       String?    // justificativa: nem todo cliente informa e-mail no WhatsApp
+  criadoEm    DateTime   @default(now())
+
+  interesses  Interesse[]
+}
+
+// -----------------------------------------------------------------------------
+// INTERESSE — registro de um pedido manifestado via WhatsApp.
+// Não é uma compra no site: apenas documenta a demanda para a loja acompanhar.
+// -----------------------------------------------------------------------------
+model Interesse {
+  codigo        String     @id @default(uuid())
+  dataInteresse DateTime   @default(now())
+  mensagem      String     // texto enviado pelo cliente no WhatsApp (peça desejada, dúvidas)
+  status        String     @default("pendente") // pendente | contactado | concluido
+  clienteId     String
+  produtoId     String
+  criadoEm      DateTime   @default(now())
+  atualizadoEm  DateTime   @updatedAt
+
+  cliente       Cliente    @relation(fields: [clienteId], references: [codigo])
+  produto       Produto    @relation(fields: [produtoId], references: [codigo])
+}
