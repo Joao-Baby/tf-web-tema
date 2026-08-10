@@ -9,10 +9,11 @@ A **Tico de Gente** é uma loja de roupa infantil. O sistema desenvolvido pelo g
 
 | Item | Descrição |
 | --- | --- |
-| Integrantes da equipe | *(preencher com os nomes dos integrantes)* |
+| Integrantes da equipe | Breno Henrique Ferreira da Silva
+Daniel Meireles Ribeiro Santos João Victor dos Santos Angelo Miguel Mendes Martim Tiago Gabriel dos Santos Nascimento |
 | Tema do sistema | Catálogo virtual com controle de estoque da loja de roupa infantil Tico de Gente |
 | Usuários | Clientes (mães, pais e familiares que navegam na loja virtual) e a equipe da loja (que gerencia o catálogo, o estoque e os contatos recebidos) |
-| Problema resolvido | O site permite que o cliente consulte as peças e a disponibilidade em tempo real sem depender de mensagens no WhatsApp, e permite que a loja registre e acompanhe cada pedido manifestado pelo canal |
+| Problema resolvido | O site permite que o cliente consulte as peças e a disponibilidade em tempo real sem depender de mensagens no WhatsApp, e permite que a loja registre e acompanhe cada pedido feito pelo canal |
 
 O banco de dados modela, portanto, o **catálogo** (categorias, produtos, tamanhos e cores), a **grade de estoque** (quantidade de cada combinação de produto, tamanho e cor) e os **contatos** (clientes que demonstraram interesse e seus pedidos feitos via WhatsApp).
 
