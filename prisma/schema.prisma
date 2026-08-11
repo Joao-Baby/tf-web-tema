@@ -34,6 +34,7 @@ model Produto {
   descricao   String?    // justificativa: alguns produtos do catálogo não têm descrição detalhada
   preco       Decimal
   ativo       Boolean    @default(true) // false = peça esgotada ou retirada da galeria
+  whatsappLink String? 
   categoriaId String
   criadoEm    DateTime   @default(now())
   atualizadoEm DateTime  @updatedAt
@@ -96,6 +97,8 @@ model Cliente {
   nome        String
   whatsapp    String     @unique // canal principal de contato e fechamento de pedidos
   email       String?    // justificativa: nem todo cliente informa e-mail no WhatsApp
+  senha        String?     // Adicione para o login (pode ser opcional ?)
+  role         String      @default("CLIENTE")
   criadoEm    DateTime   @default(now())
 
   interesses  Interesse[]
